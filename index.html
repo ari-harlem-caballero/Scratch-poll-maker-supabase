@@ -17,7 +17,7 @@
         <section class="top">
             <div class="left">
                 <form>
-                    <label>
+                    <label id="question-form">
                         Question
                         <input name="input-question">
                     </label>
@@ -35,8 +35,8 @@
                 <button>Submit</button>
             </div>
             <div class="right">
-                <section class="current-poll">
-                    <p>Current Poll</p>
+                <div class="current-poll">
+                    <h3>Current Poll</h3>
                     <p id="poll-question"></p>
                     <div class="options">
                         <div id="option-a">
@@ -48,7 +48,7 @@
                             <p id="option-b-votes"></p>
                         </div>
                     </div>
-                </section>
+                </div>
                 <div class="count-buttons">
                     <div class="add">
                         <button id="option-a-add"></button>
@@ -65,7 +65,7 @@
         <section class="bottom">
             <h3>Past Polls</h3>
             <div class="past-polls">
-                
+
             </div>
         </section>
     </main>
