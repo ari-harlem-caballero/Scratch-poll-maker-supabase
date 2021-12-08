@@ -7,6 +7,8 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;   
+    width: 100%;
+    height: 100%;
 }
 
 .top {
@@ -22,6 +24,7 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 70%;
     margin: 50px;
     border: 2px black dotted;
 }
@@ -34,11 +37,10 @@ body, html {
     margin: 10px;
 }
 
-
 .option-input {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     
 }
@@ -48,10 +50,31 @@ body, html {
     padding: 10px;
 }
 
+#submit-button {
+    margin: 10px;
+}
+
 .right {
     margin: 10px;
     padding: 20px;
     border: 2px black solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+.options {
+    border: black 1px dotted;
+}
+
+.count-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .bottom {
