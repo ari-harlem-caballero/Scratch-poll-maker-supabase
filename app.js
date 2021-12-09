@@ -1,4 +1,6 @@
 // import functions and grab DOM elements
+import { renderPastPolls } from './render-utils.js';
+
 const form = document.querySelector('form');
 const closeButton = document.querySelector('#close-poll');
 const questionELem = document.querySelector('#poll-question');
@@ -61,20 +63,50 @@ form.addEventListener('submit', (e) => {
 closeButton.addEventListener('click', () => {
     form.reset();
 
-    const poll = {
-        question: question,
-        optionATitle: optionATitle,
-        optionBTitle: optionBTitle,
-        optionAVotes: optionAVotes,
-        optionBVotes: optionBVotes,
-    };
+    const poll = makePoll();
 
     pastPollsArr.push(poll);
+
+    resetState();
+
+    displayCurrentPoll();
+
+    displayList();
+    
 });
 
 function displayCurrentPoll() {
     questionELem.textContent = question;
     optionATitleElem.textContent = optionATitle;
     optionBTitleElem.textContent = optionBTitle;
+    optionAVotesElem.textContent = optionAVotes;
+    optionBVotesElem.textContent = optionBVotes;
 }
 
+function makePoll() {
+    return {
+        question: question,
+        optionATitle: optionATitle,
+        optionBTitle: optionBTitle,
+        optionAVotes: optionAVotes,
+        optionBVotes: optionBVotes,
+    }; 
+}
+
+function resetState() {
+    question = '';
+    let optionATitle = '';
+    let optionBTitle = '';
+    let optionAVotes = 0;
+    let optionBVotes = 0;
+}
+
+function displayList() {
+    pastPollElem.textContent = '';
+
+    for (let pastPoll of pastPollsArr) {
+        const container = renderPastPolls(pastPoll);
+
+        pastPollElem.append(container);
+    }
+}
