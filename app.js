@@ -45,6 +45,17 @@ optionBSubButton.addEventListener('click', () => {
 
     optionBVotesElem.textContent = optionBVotes;
 });
-  // get user input
-  // use user input to update state 
-  // update DOM to reflect the new state
+//form event (follow format)
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+//state = data.get('form-elems-names')
+    question = data.get('input-question');
+    optionATitle = data.get('input-option-a');
+    optionBTitle = data.get('input-option-b');
+//update DOM (textCont)
+    questionELem.textContent = question;
+    optionATitleElem.textContent = optionATitle;
+    optionBTitleElem.textContent = optionBTitle;
+});
