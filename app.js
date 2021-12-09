@@ -55,7 +55,26 @@ form.addEventListener('submit', (e) => {
     optionATitle = data.get('input-option-a');
     optionBTitle = data.get('input-option-b');
 //update DOM (textCont)
+    displayCurrentPoll();
+});
+
+closeButton.addEventListener('click', () => {
+    form.reset();
+
+    const poll = {
+        question: question,
+        optionATitle: optionATitle,
+        optionBTitle: optionBTitle,
+        optionAVotes: optionAVotes,
+        optionBVotes: optionBVotes,
+    };
+
+    pastPollsArr.push(poll);
+});
+
+function displayCurrentPoll() {
     questionELem.textContent = question;
     optionATitleElem.textContent = optionATitle;
     optionBTitleElem.textContent = optionBTitle;
-});
+}
+
