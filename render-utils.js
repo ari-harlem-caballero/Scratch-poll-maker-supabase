@@ -15,5 +15,6 @@ export function renderPastPolls(pastPoll) {
     pVotesB.textContent = pastPoll.optionBVotes;
 
     container.append(pQuestionElem, pTitleA, pTitleB, pVotesA, pVotesB);
+    
     return container;
 }

@@ -1,7 +1,8 @@
 // import functions and grab DOM elements
 import { renderPastPolls } from './render-utils.js';
 
-const form = document.querySelector('form');
+const form = document.querySelector('#form1');
+console.log(form);
 const closeButton = document.querySelector('#close-poll');
 const questionELem = document.querySelector('#poll-question');
 const optionATitleElem = document.querySelector('#option-a-title');
@@ -48,16 +49,20 @@ optionBSubButton.addEventListener('click', () => {
     optionBVotesElem.textContent = optionBVotes;
 });
 //form event (follow format)
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const data = new FormData(form);
+    console.log(data);
 //state = data.get('form-elems-names')
     question = data.get('input-question');
     optionATitle = data.get('input-option-a');
     optionBTitle = data.get('input-option-b');
 //update DOM (textCont)
     displayCurrentPoll();
+
+    // form.reset();
 });
 
 closeButton.addEventListener('click', () => {
@@ -95,10 +100,10 @@ function makePoll() {
 
 function resetState() {
     question = '';
-    let optionATitle = '';
-    let optionBTitle = '';
-    let optionAVotes = 0;
-    let optionBVotes = 0;
+    optionATitle = '';
+    optionBTitle = '';
+    optionAVotes = 0;
+    optionBVotes = 0;
 }
 
 function displayList() {
