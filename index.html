@@ -9,63 +9,35 @@
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/home.css">
-    <title>Poll Magic</title>
+    <title>Poll Sign-In</title>
 </head>
 
 <body>
     <main>
-        <section class="top">
+        <section class="forms">
             <div class="left">
-                <form id="form1">
-                    <label id="question-form">
-                        Question
-                        <input name="input-question" />
-                    </label>
-                    <!-- <div class="option-input"> -->
-                        <label>
-                            Option A
-                            <input name="input-option-a" />
-                        </label>
-                        <label>
-                            Option B
-                            <input name="input-option-b" />
-                        </label>
-                    <!-- </div> -->
-                    <button id="submit-button">Submit</button>
-                </form>
+                <div class="auth-container">
+                    <form id="sign-in">
+                        sign in
+                        <label>Email</label>
+                        <input type="email" name="email" id="sign-in-email">
+                        <label>Password</label>
+                        <input type="password" name="password" id="sign-in-password">
+                        <button>Sign In</button>
+                    </form>
+                </div>
             </div>
             <div class="right">
-                <div class="current-poll">
-                    <h3>Current Poll</h3>
-                    <p id="poll-question"></p>
-                    <div class="options">
-                        <div id="option-a">
-                            <p id="option-a-title"></p>
-                            <p id="option-a-votes"></p>
-                        </div>
-                        <div id="option-b">
-                            <p id="option-b-title"></p>
-                            <p id="option-b-votes"></p>
-                        </div>
-                    </div>
+                <div class="auth-container">
+                    <form id="sign-up">
+                        sign in
+                        <label>Email</label>
+                        <input type="email" name="email" id="sign-up-email">
+                        <label>Password</label>
+                        <input type="password" name="password" id="sign-up-password">
+                        <button>Sign Up</button>
+                    </form>
                 </div>
-                <div class="count-buttons">
-                    <div class="add">
-                        <button id="option-a-add">+</button>
-                        <button id="option-b-add">+</button>
-                    </div>
-                    <div class="sub">
-                        <button id="option-a-sub">-</button>
-                        <button id="option-b-sub">-</button>
-                    </div>
-                </div>
-                <button id="close-poll">Close Poll</button>
-            </div>
-        </section>
-        <section class="bottom">
-            <h3>Past Polls</h3>
-            <div class="past-polls">
-
             </div>
         </section>
     </main>
