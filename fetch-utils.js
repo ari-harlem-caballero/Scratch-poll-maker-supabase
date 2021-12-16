@@ -5,7 +5,7 @@ export async function getUser() {
 }
 
 export function checkLoggedIn() {
-    if (!client.auth.user()) {
+    if (!client.auth.session()) {
         window.location = '../';
     }
 }
@@ -16,6 +16,8 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function logout() {
     await client.auth.signOut();
+
+    return window.location.href = './';
 }
 
 export async function signUp(email, password) {
@@ -25,28 +27,40 @@ export async function signUp(email, password) {
         email: email,
         password: password,
     });
+    console.log('after signup', client.auth.user());
+    return response.data;
+}
+
+export async function signIn(email, password) {
+
+    const response = await client.auth.signIn({
+        email: email,
+        password: password,
+    });
+
     return response.data;
 }
 
 export async function savePoll(question, option1, option2, votes1, votes2) {
-    const repsonse = await client
+    console.log(question, option1, option2, votes1, votes2);
+    const response = await client
         .from('poll')
         .insert([
             {
-                question,
+                question: question,
                 option_1: option1,
                 option_2: option2,
                 votes_1: votes1,
                 votes_2: votes2,
             },
         ]);
-    return repsonse.data;
+    return response.data;
 }
 
 export async function getPolls() {
-    const repsonse = await client
+    const response = await client
         .from('poll')
         .select();
 
-    return repsonse.data;
+    return response.data;
 }
