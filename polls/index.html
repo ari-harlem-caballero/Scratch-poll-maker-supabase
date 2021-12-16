@@ -14,6 +14,7 @@
 
 <body>
     <main>
+        <button id="logout">Logout</button>
         <section class="top">
             <div class="left">
                 <form id="form1">
@@ -23,12 +24,12 @@
                     </label>
                     <!-- <div class="option-input"> -->
                         <label>
-                            Option A
-                            <input name="input-option-a" />
+                            Option 1
+                            <input name="input-option-1" />
                         </label>
                         <label>
-                            Option B
-                            <input name="input-option-b" />
+                            Option 2
+                            <input name="input-option-2" />
                         </label>
                     <!-- </div> -->
                     <button id="submit-button">Submit</button>
@@ -39,24 +40,20 @@
                     <h3>Current Poll</h3>
                     <p id="poll-question"></p>
                     <div class="options">
-                        <div id="option-a">
-                            <p id="option-a-title"></p>
-                            <p id="option-a-votes"></p>
+                        <div id="option-1">
+                            <p id="option-1-title"></p>
+                            <p id="option-1-votes"></p>
                         </div>
-                        <div id="option-b">
-                            <p id="option-b-title"></p>
-                            <p id="option-b-votes"></p>
+                        <div id="option-2">
+                            <p id="option-2-title"></p>
+                            <p id="option-2-votes"></p>
                         </div>
                     </div>
                 </div>
                 <div class="count-buttons">
                     <div class="add">
-                        <button id="option-a-add">+</button>
-                        <button id="option-b-add">+</button>
-                    </div>
-                    <div class="sub">
-                        <button id="option-a-sub">-</button>
-                        <button id="option-b-sub">-</button>
+                        <button id="option-1-add">+</button>
+                        <button id="option-2-add">+</button>
                     </div>
                 </div>
                 <button id="close-poll">Close Poll</button>

@@ -1,52 +1,48 @@
 // import functions and grab DOM elements
 import { renderPastPolls } from '../render-utils.js';
+import { savePoll, getPolls, checkLoggedIn, logout } from '../fetch-utils.js';
+
+checkLoggedIn();
 
 const form = document.querySelector('#form1');
-console.log(form);
 const closeButton = document.querySelector('#close-poll');
 const questionELem = document.querySelector('#poll-question');
-const optionATitleElem = document.querySelector('#option-a-title');
-const optionBTitleElem = document.querySelector('#option-b-title');
-const optionAVotesElem = document.querySelector('#option-a-votes');
-const optionBVotesElem = document.querySelector('#option-b-votes');
-const optionAAddButton = document.querySelector('#option-a-add');
-const optionBAddButton = document.querySelector('#option-b-add');
-const optionASubButton = document.querySelector('#option-a-sub');
-const optionBSubButton = document.querySelector('#option-b-sub');
+const option1TitleElem = document.querySelector('#option-1-title');
+const option2TitleElem = document.querySelector('#option-2-title');
+const option1VotesElem = document.querySelector('#option-1-votes');
+const option2VotesElem = document.querySelector('#option-2-votes');
+const option1AddButton = document.querySelector('#option-1-add');
+const option2AddButton = document.querySelector('#option-2-add');
 const pastPollElem = document.querySelector('.past-polls');
+const logoutButtonElem = document.querySelector('#logout');
 
 // let state
 let question = '';
-let optionATitle = '';
-let optionBTitle = '';
-let optionAVotes = 0;
-let optionBVotes = 0;
+let option1Title = '';
+let option2Title = '';
+let option1Votes = 0;
+let option2Votes = 0;
 
-const pastPollsArr = [];
+window.addEventListener('load', async() => {
+    await displayPolls();
+});
+
+logoutButtonElem.addEventListener('click', async() => {
+    await logout();
+});
+
 // set event listeners 
 // increase score, update DOM (textCont)
-optionAAddButton.addEventListener('click', () => {
-    optionAVotes++;
+option1AddButton.addEventListener('click', () => {
+    option1Votes++;
 
-    optionAVotesElem.textContent = optionAVotes;
+    option1VotesElem.textContent = option1Votes;
 });
 
-optionBAddButton.addEventListener('click', () => {
-    optionBVotes++;
+option2AddButton.addEventListener('click', () => {
+    option2Votes++;
 
-    optionBVotesElem.textContent = optionBVotes;
-});
-
-optionASubButton.addEventListener('click', () => {
-    optionAVotes--;
-
-    optionAVotesElem.textContent = optionAVotes;
-});
-
-optionBSubButton.addEventListener('click', () => {
-    optionBVotes--;
-
-    optionBVotesElem.textContent = optionBVotes;
+    option2VotesElem.textContent = option2Votes;
 });
 //form event (follow format)
 
@@ -54,62 +50,39 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const data = new FormData(form);
-    console.log(data);
 //state = data.get('form-elems-names')
     question = data.get('input-question');
-    optionATitle = data.get('input-option-a');
-    optionBTitle = data.get('input-option-b');
+    option1Title = data.get('input-option-1');
+    option2Title = data.get('input-option-2');
+    option1Votes = data.get('option-1-votes');
+    option2Votes = data.get('option-2-votes');
 //update DOM (textCont)
     displayCurrentPoll();
 
-    // form.reset();
-});
-
-closeButton.addEventListener('click', () => {
     form.reset();
-
-    const poll = makePoll();
-
-    pastPollsArr.push(poll);
-
-    resetState();
-
-    displayCurrentPoll();
-
-    displayList();
-    
 });
 
 function displayCurrentPoll() {
     questionELem.textContent = question;
-    optionATitleElem.textContent = optionATitle;
-    optionBTitleElem.textContent = optionBTitle;
-    optionAVotesElem.textContent = optionAVotes;
-    optionBVotesElem.textContent = optionBVotes;
+    option1TitleElem.textContent = option1Title;
+    option2TitleElem.textContent = option2Title;
+    option1VotesElem.textContent = option1Votes;
+    option2VotesElem.textContent = option2Votes;
 }
 
-function makePoll() {
-    return {
-        question: question,
-        optionATitle: optionATitle,
-        optionBTitle: optionBTitle,
-        optionAVotes: optionAVotes,
-        optionBVotes: optionBVotes,
-    }; 
-}
+closeButton.addEventListener('click', async() => {
+    await savePoll(question, option1Title, option2Title, option1Votes, option2Votes);
+    
+    displayPolls();
+});
 
-function resetState() {
-    question = '';
-    optionATitle = '';
-    optionBTitle = '';
-    optionAVotes = 0;
-    optionBVotes = 0;
-}
 
-function displayList() {
+async function displayPolls() {
+    const polls = await getPolls();
+    
     pastPollElem.textContent = '';
 
-    for (let pastPoll of pastPollsArr) {
+    for (let pastPoll of polls) {
         const container = renderPastPolls(pastPoll);
 
         pastPollElem.append(container);
