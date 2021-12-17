@@ -13,7 +13,7 @@ const option1VotesElem = document.querySelector('#option-1-votes');
 const option2VotesElem = document.querySelector('#option-2-votes');
 const option1AddButton = document.querySelector('#option-1-add');
 const option2AddButton = document.querySelector('#option-2-add');
-const pastPollElem = document.querySelector('.past-polls');
+const pastPollElem = document.querySelector('.past-poll-hold');
 const logoutButtonElem = document.querySelector('#logout');
 
 // let state
@@ -74,6 +74,8 @@ closeButton.addEventListener('click', async() => {
     await savePoll(question, option1Title, option2Title, option1Votes, option2Votes);
     
     displayPolls();
+
+    displayCurrentPoll();
 });
 
 

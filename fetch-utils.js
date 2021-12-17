@@ -42,7 +42,7 @@ export async function signIn(email, password) {
 }
 
 export async function savePoll(question, option1, option2, votes1, votes2) {
-    console.log(question, option1, option2, votes1, votes2);
+
     const response = await client
         .from('poll')
         .insert([
