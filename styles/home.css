@@ -1,1 +1,87 @@
 /* add home page styles here */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=PT+Sans+Narrow&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+    width: 100%;
+    margin: 0;
+    background-image: url('../assets/plant-frame.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    height: 100%;
+    max-width: 80%;
+    min-width: 40%;
+}
+
+h1 {
+    margin: 0;
+    font-family: 'Amatic SC', cursive;
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.forms {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+}
+
+.left, .right {
+    margin: 30px 60px;
+    padding: 20px;
+    text-align: center;
+}
+
+#sign-in, #sign-up {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+label {
+    padding: 10px 0;
+    font-family: 'Amatic SC', cursive;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+input {
+    border-radius: 20px;
+    line-height: 20px;
+    width: 200px;
+    padding: 2px 10px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 15px;
+}
+
+button {
+    margin: 10px 0;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+h2 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+    font-weight: 900;
+}
